@@ -1,0 +1,109 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Companieshouse",
+		"description": "API for api.companieshouse.gov.uk",
+		"version": "0.0.0"
+	},
+	"host": "api.companieshouse.gov.uk",
+	"schemes": ["https"],
+	"paths": {
+		"/company/{company_number}/registered-office-address": {
+			"get": {
+				"tags": ["Company"],
+				"description": "Get registered office",
+				"operationId": "getRegisteredOffice",
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "company_number",
+					"in": "path",
+					"description": "Company number",
+					"required": true,
+					"type": "string",
+					"x-example": ""
+				}],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/GetRegisteredOffice"
+						},
+						"examples": {
+							"application/json": {
+								"etag": "09ce464d3d644a7d05c187a9323df8697cebab6b",
+								"kind": "registered-office-address",
+								"links": {
+									"self": "/company/04145329/registered-office-address"
+								},
+								"address_line_1": "Lindred House, 20 Lindred Road",
+								"address_line_2": "Brierfield",
+								"locality": "Nelson",
+								"postal_code": "BB9 5SR"
+							}
+						}
+					}
+				},
+				"security": [{
+					"Default": []
+				}]
+			}
+		}
+	},
+	"definitions": {
+		"Links": {
+			"description": "Model for Links",
+			"required": ["self"],
+			"properties": {
+				"self": {
+					"type": "string",
+					"x-example": "/company/04145329/registered-office-address"
+				}
+			}
+		},
+		"GetRegisteredOffice": {
+			"description": "Model for GetRegisteredOffice",
+			"required": ["address_line_1"],
+			"properties": {
+				"address_line_1": {
+					"type": "string",
+					"x-example": "Lindred House, 20 Lindred Road"
+				},
+				"address_line_2": {
+					"type": "string",
+					"x-example": "Brierfield"
+				},
+				"etag": {
+					"type": "string",
+					"x-example": "09ce464d3d644a7d05c187a9323df8697cebab6b"
+				},
+				"kind": {
+					"type": "string",
+					"x-example": "registered-office-address"
+				},
+				"links": {
+					"$ref": "#/definitions/Links",
+					"x-example": "{\n  \"self\": \"/company/04145329/registered-office-address\"\n}"
+				},
+				"locality": {
+					"type": "string",
+					"x-example": "Nelson"
+				},
+				"postal_code": {
+					"type": "string",
+					"x-example": "BB9 5SR"
+				}
+			}
+		}
+	},
+	"securityDefinitions": {
+		"Default": {
+			"description": "Default Authentication",
+			"type": "basic"
+		}
+	},
+	"security": [],
+	"tags": [{
+		"name": "Company",
+		"description": "Operations about Company"
+	}]
+}
