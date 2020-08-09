@@ -1,109 +1,295 @@
 {
-	"swagger": "2.0",
-	"info": {
-		"title": "Companieshouse",
-		"description": "API for api.companieshouse.gov.uk",
-		"version": "0.0.0"
-	},
-	"host": "api.companieshouse.gov.uk",
-	"schemes": ["https"],
-	"paths": {
-		"/company/{company_number}/registered-office-address": {
-			"get": {
-				"tags": ["Company"],
-				"description": "Get registered office",
-				"operationId": "getRegisteredOffice",
-				"produces": ["application/json"],
-				"parameters": [{
-					"name": "company_number",
-					"in": "path",
-					"description": "Company number",
-					"required": true,
-					"type": "string",
-					"x-example": ""
-				}],
-				"responses": {
-					"200": {
-						"description": "OK",
-						"schema": {
-							"$ref": "#/definitions/GetRegisteredOffice"
-						},
-						"examples": {
-							"application/json": {
-								"etag": "09ce464d3d644a7d05c187a9323df8697cebab6b",
-								"kind": "registered-office-address",
-								"links": {
-									"self": "/company/04145329/registered-office-address"
-								},
-								"address_line_1": "Lindred House, 20 Lindred Road",
-								"address_line_2": "Brierfield",
-								"locality": "Nelson",
-								"postal_code": "BB9 5SR"
-							}
-						}
-					}
-				},
-				"security": [{
-					"Default": []
-				}]
-			}
-		}
-	},
-	"definitions": {
-		"Links": {
-			"description": "Model for Links",
-			"required": ["self"],
-			"properties": {
-				"self": {
-					"type": "string",
-					"x-example": "/company/04145329/registered-office-address"
-				}
-			}
-		},
-		"GetRegisteredOffice": {
-			"description": "Model for GetRegisteredOffice",
-			"required": ["address_line_1"],
-			"properties": {
-				"address_line_1": {
-					"type": "string",
-					"x-example": "Lindred House, 20 Lindred Road"
-				},
-				"address_line_2": {
-					"type": "string",
-					"x-example": "Brierfield"
-				},
-				"etag": {
-					"type": "string",
-					"x-example": "09ce464d3d644a7d05c187a9323df8697cebab6b"
-				},
-				"kind": {
-					"type": "string",
-					"x-example": "registered-office-address"
-				},
-				"links": {
-					"$ref": "#/definitions/Links",
-					"x-example": "{\n  \"self\": \"/company/04145329/registered-office-address\"\n}"
-				},
-				"locality": {
-					"type": "string",
-					"x-example": "Nelson"
-				},
-				"postal_code": {
-					"type": "string",
-					"x-example": "BB9 5SR"
-				}
-			}
-		}
-	},
-	"securityDefinitions": {
-		"Default": {
-			"description": "Default Authentication",
-			"type": "basic"
-		}
-	},
-	"security": [],
-	"tags": [{
-		"name": "Company",
-		"description": "Operations about Company"
-	}]
+    "swagger": "2.0",
+    "info": {
+        "title": "Companieshouse",
+        "description": "API for api.companieshouse.gov.uk",
+        "version": "0.0.0"
+    },
+    "host": "api.companieshouse.gov.uk",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/company/{company_number}/registered-office-address": {
+            "get": {
+                "tags": [
+                    "Company"
+                ],
+                "description": "Get registered office",
+                "operationId": "getRegisteredOffice",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "company_number",
+                        "in": "path",
+                        "description": "Company number",
+                        "required": true,
+                        "type": "string",
+                        "x-example": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/GetRegisteredOffice"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "etag": "09ce464d3d644a7d05c187a9323df8697cebab6b",
+                                "kind": "registered-office-address",
+                                "links": {
+                                    "self": "/company/04145329/registered-office-address"
+                                },
+                                "address_line_1": "Lindred House, 20 Lindred Road",
+                                "address_line_2": "Brierfield",
+                                "locality": "Nelson",
+                                "postal_code": "BB9 5SR"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Default": []
+                    }
+                ]
+            }
+        },
+        "/search/companies?q={company_number}": {
+            "get": {
+                "tags": [
+                    "Company"
+                ],
+                "description": "Get company details",
+                "operationId": "getCompanyDetails",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "company_number",
+                        "in": "path",
+                        "description": "Company number",
+                        "required": true,
+                        "type": "string",
+                        "x-example": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/GetCompanyDetails"
+                        },
+                        "examples": {
+                            "items_per_page": 20,
+                            "start_index": 0,
+                            "total_results": 1,
+                            "kind": "search#companies",
+                            "items": [
+                                {
+                                    "kind": "searchresults#company",
+                                    "date_of_creation": "2004-12-10",
+                                    "company_type": "ltd",
+                                    "links": {
+                                        "self": "/company/05310128"
+                                    },
+                                    "company_status": "active",
+                                    "address_snippet": "260 Bath Road, Slough, Berkshire, SL1 4DX",
+                                    "title": "TELEFONICA O2 HOLDINGS LIMITED",
+                                    "description_identifier": [
+                                        "incorporated-on"
+                                    ],
+                                    "description": "05310128 - Incorporated on 10 December 2004",
+                                    "company_number": "05310128",
+                                    "address": {
+                                        "postal_code": "SL1 4DX",
+                                        "address_line_1": "Bath Road",
+                                        "premises": "260",
+                                        "locality": "Slough",
+                                        "region": "Berkshire"
+                                    }
+                                }
+                            ],
+                            "page_number": 1
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Default": []
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "Links": {
+            "description": "Model for Links",
+            "properties": {
+                "self": {
+                    "type": "string",
+                    "x-example": "/company/04145329/registered-office-address"
+                }
+            }
+        },
+        "Address": {
+            "description": "Model for Address",
+            "properties": {
+                "postal_code": {
+                    "type": "string",
+                    "x-example": "SL1 4DX"
+                },
+                "address_line_1": {
+                    "type": "string",
+                    "x-example": "Bath Road"
+                },
+                "premises": {
+                    "type": "string",
+                    "x-example": "260"
+                },
+                "locality": {
+                    "type": "string",
+                    "x-example": "Slough"
+                },
+                "region": {
+                    "type": "string",
+                    "x-example": "Berkshire"
+                }
+            }
+        },
+        "Company": {
+            "description": "Model for Company",
+            "properties": {
+                "kind": {
+                    "type": "string",
+                    "x-example": "searchresults#company"
+                },
+                "date_of_creation": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-example": "2004-12-10"
+                },
+                "company_type": {
+                    "type": "string",
+                    "x-example": "ltd"
+                },
+                "links": {
+                    "$ref": "#/definitions/Links"
+                },
+                "company_status": {
+                    "type": "string",
+                    "x-example": "active"
+                },
+                "address_snippet": {
+                    "type": "string",
+                    "x-example": "260 Bath Road, Slough, Berkshire, SL1 4DX"
+                },
+                "title": {
+                    "type": "string",
+                    "x-example": "TELEFONICA O2 HOLDINGS LIMITED"
+                },
+                "description_identifier": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "x-example": "05310128 - Incorporated on 10 December 2004"
+                },
+                "company_number": {
+                    "type": "string",
+                    "x-example": "05310128"
+                },
+                "address": {
+                    "$ref": "#/definitions/Address"
+                }
+            }
+        },
+        "GetRegisteredOffice": {
+            "description": "Model for GetRegisteredOffice",
+            "required": [
+                "address_line_1"
+            ],
+            "properties": {
+                "address_line_1": {
+                    "type": "string",
+                    "x-example": "Lindred House, 20 Lindred Road"
+                },
+                "address_line_2": {
+                    "type": "string",
+                    "x-example": "Brierfield"
+                },
+                "etag": {
+                    "type": "string",
+                    "x-example": "09ce464d3d644a7d05c187a9323df8697cebab6b"
+                },
+                "kind": {
+                    "type": "string",
+                    "x-example": "registered-office-address"
+                },
+                "links": {
+                    "$ref": "#/definitions/Links",
+                    "x-example": "{\n  \"self\": \"/company/04145329/registered-office-address\"\n}"
+                },
+                "locality": {
+                    "type": "string",
+                    "x-example": "Nelson"
+                },
+                "postal_code": {
+                    "type": "string",
+                    "x-example": "BB9 5SR"
+                }
+            }
+        },
+        "GetCompanyDetails": {
+            "description": "Model for GetCompanyDetails",
+            "properties": {
+                "items_per_page": {
+                    "type": "number",
+                    "x-example": 0
+                },
+                "start_index": {
+                    "type": "number",
+                    "x-example": 0
+                },
+                "total_results": {
+                    "type": "number",
+                    "x-example": 0
+                },
+                "kind": {
+                    "type": "string",
+                    "x-example": "search#companies"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Company"
+                    }
+                },
+                "page_number": {
+                    "type": "number",
+                    "x-example": 0
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Default": {
+            "description": "Default Authentication",
+            "type": "basic"
+        }
+    },
+    "security": [],
+    "tags": [
+        {
+            "name": "Company",
+            "description": "Operations about Company"
+        }
+    ]
 }
