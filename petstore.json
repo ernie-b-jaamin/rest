@@ -25,9 +25,19 @@
           "application/xml"
         ],
         "produces": [
-          "definitions/Pet"
+          "application/json",
+          "application/xml"
         ],
         "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pet"
+              }
+            }
+          },
           "405": {
             "description": "Invalid input"
           }
