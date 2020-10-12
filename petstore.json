@@ -1,0 +1,61 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample Petstore server.  You can find \nout more about Swagger at \n[http://swagger.io](http://swagger.io) or on \n[irc.freenode.net, #swagger](http://swagger.io/irc/).\n",
+    "version": "1.0.0",
+    "title": "Swagger Petstore"
+  },
+  "tags": [
+    {
+      "name": "pet",
+      "description": "Everything about your Pets",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    }
+  ],
+  "paths": {
+    "/pets": {
+      "get": {
+        "summary": "Get all pets",
+        "operationId": "getPets",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Pet": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        }
+      }
+    }
+  },
+  "host": "petstore.execute-api.eu-west-2.amazonaws.com",
+  "basePath": "/petstore",
+  "schemes": [
+    "http"
+  ]
+}
