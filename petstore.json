@@ -25,8 +25,7 @@
           "application/xml"
         ],
         "produces": [
-          "application/json",
-          "application/xml"
+          "definitions/Pet"
         ],
         "responses": {
           "405": {
