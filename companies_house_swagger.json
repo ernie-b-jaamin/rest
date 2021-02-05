@@ -137,9 +137,9 @@
                 ],
                 "parameters": [
                     {
-                        "name": "company_name",
+                        "name": "company_number",
                         "in": "path",
-                        "description": "company_name",
+                        "description": "company_number",
                         "required": true,
                         "type": "string"
                     }
