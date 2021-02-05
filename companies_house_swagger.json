@@ -230,6 +230,12 @@
                 },
                 "officer_role": {
                     "type": "string"
+                },
+                "occupation": {
+                    "type": "string"
+                },
+                "country_of_residence": {
+                    "type": "string"
                 }
             }
         },
