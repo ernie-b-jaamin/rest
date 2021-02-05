@@ -124,15 +124,118 @@
                     }
                 ]
             }
+        },
+        "/company/{company_number}/officers": {
+            "get": {
+                "tags": [
+                    "Company"
+                ],
+                "description": "Officers",
+                "operationId": "officers",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "company_name",
+                        "in": "path",
+                        "description": "company_name",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Officers"
+                        },
+                        "start_index": 0,
+                        "kind": "officer-list"
+                    }
+                }
+            }
         }
     },
     "definitions": {
+        "GetOfficers": {
+            "description": "Model for Officers",
+            "required": [
+                "active_count"
+            ],
+            "properties": {
+                "active_count": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "etag": {
+                    "type": "string"
+                },
+                "inactive_count": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/OfficerItems"
+                    },
+                    "x-example": ""
+                },
+                "items_per_page": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "kind": {
+                    "type": "string"
+                },
+                "links": {
+                    "$ref": "#/definitions/Links"
+                },
+                "resigned_count": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "start_index": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "total_results": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
         "Links": {
             "description": "Model for Links",
             "properties": {
                 "self": {
                     "type": "string",
                     "x-example": "/company/04145329/registered-office-address"
+                }
+            }
+        },
+        "OfficerItems": {
+            "description": "Model for Items",
+            "required": [
+                "address"
+            ],
+            "properties": {
+                "address": {
+                    "$ref": "#/definitions/Address"
+                },
+                "appointed_on": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "links": {
+                    "$ref": "#/definitions/Links2"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "officer_role": {
+                    "type": "string"
                 }
             }
         },
@@ -167,6 +270,31 @@
                 "region": {
                     "type": "string",
                     "x-example": "Berkshire"
+                }
+            }
+        },
+        "Officer": {
+            "description": "Model for Officer",
+            "required": [
+                "appointments"
+            ],
+            "properties": {
+                "appointments": {
+                    "type": "string"
+                }
+            }
+        },
+        "Links2": {
+            "description": "Model for Links2",
+            "required": [
+                "officer"
+            ],
+            "properties": {
+                "officer": {
+                    "$ref": "#/definitions/Officer"
+                },
+                "self": {
+                    "type": "string"
                 }
             }
         },
