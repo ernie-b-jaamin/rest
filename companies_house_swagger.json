@@ -136,6 +136,15 @@
                 }
             }
         },
+        "Items": {
+            "description": "Model for Items",
+            "properties": {
+                "self": {
+                    "type": "string",
+                    "x-example": "/company/04145329/registered-office-address"
+                }
+            }
+        },
         "Address": {
             "description": "Model for Address",
             "properties": {
