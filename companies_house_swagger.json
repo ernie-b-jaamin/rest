@@ -222,6 +222,10 @@
                     "type": "string",
                     "format": "date-time"
                 },
+                "resigned_on": {
+                    "type": "string",
+                    "format": "date-time"
+                },
                 "links": {
                     "$ref": "#/definitions/Links2"
                 },
