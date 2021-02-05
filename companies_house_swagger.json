@@ -158,7 +158,7 @@
         }
     },
     "definitions": {
-        "GetOfficers": {
+        "Officers": {
             "description": "Model for Officers",
             "required": [
                 "active_count"
