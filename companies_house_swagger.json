@@ -130,7 +130,7 @@
                 "tags": [
                     "Company"
                 ],
-                "description": "Officers",
+                "description": "Get Officers",
                 "operationId": "officers",
                 "produces": [
                     "application/json"
@@ -165,15 +165,13 @@
             ],
             "properties": {
                 "active_count": {
-                    "type": "integer",
-                    "format": "int32"
+                    "type": "number"
                 },
                 "etag": {
                     "type": "string"
                 },
                 "inactive_count": {
-                    "type": "integer",
-                    "format": "int32"
+                    "type": "number"
                 },
                 "items": {
                     "type": "array",
@@ -183,8 +181,7 @@
                     "x-example": ""
                 },
                 "items_per_page": {
-                    "type": "integer",
-                    "format": "int32"
+                    "type": "number"
                 },
                 "kind": {
                     "type": "string"
@@ -193,16 +190,13 @@
                     "$ref": "#/definitions/Links"
                 },
                 "resigned_count": {
-                    "type": "integer",
-                    "format": "int32"
+                    "type": "number"
                 },
                 "start_index": {
-                    "type": "integer",
-                    "format": "int32"
+                    "type": "number"
                 },
                 "total_results": {
-                    "type": "integer",
-                    "format": "int32"
+                    "type": "number"
                 }
             }
         },
@@ -226,7 +220,7 @@
                 },
                 "appointed_on": {
                     "type": "string",
-                    "format": "date"
+                    "format": "date-time"
                 },
                 "links": {
                     "$ref": "#/definitions/Links2"
