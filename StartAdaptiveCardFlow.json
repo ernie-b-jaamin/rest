@@ -6,11 +6,12 @@
         "version": "0.0.0"
     },
     "host": "prod-139.westeurope.logic.azure.com:443",
+    "basePath": "/workflows/4c1aca73bfa742b7add788311aeef23f/triggers/manual/paths",
     "schemes": [
         "https"
     ],
     "paths": {
-        "/workflows/4c1aca73bfa742b7add788311aeef23f/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=BzLFx8HrHIKEVkubj6DfAB59ZS2MYeWUWNaUj7aguAk": {
+        "/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=BzLFx8HrHIKEVkubj6DfAB59ZS2MYeWUWNaUj7aguAk": {
             "post": {
                 "tags": [
                     "Workflows"
