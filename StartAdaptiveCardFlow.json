@@ -6,18 +6,51 @@
         "version": "0.0.0"
     },
     "host": "prod-139.westeurope.logic.azure.com:443",
-    "basePath": "/workflows/4c1aca73bfa742b7add788311aeef23f/triggers/manual/paths",
     "schemes": [
         "https"
     ],
     "paths": {
-        "/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=BzLFx8HrHIKEVkubj6DfAB59ZS2MYeWUWNaUj7aguAk": {
+        "/workflows/4c1aca73bfa742b7add788311aeef23f/triggers/manual/paths/invoke": {
             "post": {
                 "tags": [
                     "Workflows"
                 ],
                 "description": "Start flow",
                 "operationId": "StartFlow",
+                "parameters": [
+                    {
+                        "name": "api-version",
+                        "in": "query",
+                        "description": "Api version",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "2016-06-01"
+                    },
+                    {
+                        "name": "sp",
+                        "in": "query",
+                        "description": "Sp",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "/triggers/manual/run"
+                    },
+                    {
+                        "name": "sv",
+                        "in": "query",
+                        "description": "Sv",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "1.0"
+                    },
+                    {
+                        "name": "sig",
+                        "in": "query",
+                        "description": "Sig",
+                        "required": false,
+                        "type": "string",
+                        "x-example": "BzLFx8HrHIKEVkubj6DfAB59ZS2MYeWUWNaUj7aguAk"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
