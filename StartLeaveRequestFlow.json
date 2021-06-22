@@ -1,0 +1,100 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Start Leave Request Flow",
+        "description": "Start Leave Request Flow",
+        "version": "0.0.0"
+    },
+    "host": "prod-215.westeurope.logic.azure.com:443",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/workflows/79c77a5644534a0eab31d19427d56e44/triggers/manual/paths/invoke": {
+            "post": {
+                "tags": [
+                    "Workflows"
+                ],
+                "description": "Start flow",
+                "operationId": "StartFlow",
+                "parameters": [
+                    {
+                        "name": "api-version",
+                        "in": "query",
+                        "description": "Api version",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sp",
+                        "in": "query",
+                        "description": "Sp",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sv",
+                        "in": "query",
+                        "description": "Sv",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sig",
+                        "in": "query",
+                        "description": "Sig",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Body",
+                        "in": "body",
+                        "description": "Body",
+                        "required": true,
+                        "type": "object",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "UserName": {
+                                    "type": "string"
+                                },
+                                "Comment": {
+                                    "type": "string"
+                                },
+                                "LeaveType": {
+                                    "type": "string"
+                                },
+                                "ID": {
+                                    "type": "integer"
+                                },
+                                "StartDate": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                "EndDate": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": []
+            }
+        }
+    },
+    "definitions": {},
+    "securityDefinitions": {},
+    "security": [],
+    "tags": [
+        {
+            "name": "Workflows",
+            "description": "Operations about Workflows"
+        }
+    ]
+}
