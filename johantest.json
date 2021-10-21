@@ -23,7 +23,7 @@
                     "cal_exchangediary"
                 ],
                 "description": "Returns the schema of view cal_exchangediary. This a list of the published fields and types of the view. The names of the fields are as they appear in the web service, not in the view (they may have been renamed in the web service's configuration)",
-                "operationId": "schema_cal_exchangediary",
+                "operationId": "Get_schema_cal_exchangediary",
                 "produces": [
                     "application/xml;charset=UTF-8;subtype=denodo-8.0",
                     "application/json;charset=UTF-8;subtype=denodo-8.0"
