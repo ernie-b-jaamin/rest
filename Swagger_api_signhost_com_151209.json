@@ -140,17 +140,15 @@
                         "name": "Authorization",
                         "in": "header",
                         "description": "API Key",
-                        "required": false,
-                        "type": "string",
-                        "x-example": ""
+                        "required": true,
+                        "type": "string"
                     },
                     {
                         "name": "Application",
                         "in": "header",
                         "description": "APP Key",
-                        "required": false,
-                        "type": "string",
-                        "x-example": ""
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -161,13 +159,7 @@
                         }
                     }
                 },
-                "security": [{
-                        "Authorization": []
-                    },
-                    {
-                        "Application": []
-                    }
-                ]
+                "security": []
             }
         },
         "/api/file/receipt/{transactionId}": {
