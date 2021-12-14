@@ -161,7 +161,13 @@
                         }
                     }
                 },
-                "security": []
+                "security": [{
+                        "Authorization": []
+                    },
+                    {
+                        "Application": []
+                    }
+                ]
             }
         },
         "/api/file/receipt/{transactionId}": {
@@ -538,7 +544,20 @@
             "properties": {}
         }
     },
-    "securityDefinitions": {},
+    "securityDefinitions": {
+        "Authorization": {
+            "description": "Authorization",
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        },
+        "Application": {
+            "description": "Application",
+            "type": "apiKey",
+            "name": "Application",
+            "in": "header"
+        }
+    },
     "security": [],
     "tags": [{
         "name": "Web",
