@@ -37,22 +37,6 @@
                         "x-example": ""
                     },
                     {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "API Key",
-                        "required": false,
-                        "type": "string",
-                        "x-example": ""
-                    },
-                    {
-                        "name": "Application",
-                        "in": "header",
-                        "description": "APP Key",
-                        "required": false,
-                        "type": "string",
-                        "x-example": ""
-                    },
-                    {
                         "name": "file",
                         "in": "formData",
                         "description": "File",
@@ -95,22 +79,6 @@
                         "in": "path",
                         "description": "File ID",
                         "required": true,
-                        "type": "string",
-                        "x-example": ""
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "API Key",
-                        "required": false,
-                        "type": "string",
-                        "x-example": ""
-                    },
-                    {
-                        "name": "Application",
-                        "in": "header",
-                        "description": "APP Key",
-                        "required": false,
                         "type": "string",
                         "x-example": ""
                     }
@@ -167,30 +135,13 @@
                     "application/pdf"
                 ],
                 "parameters": [{
-                        "name": "transactionId",
-                        "in": "path",
-                        "description": "Transaction ID",
-                        "required": true,
-                        "type": "string",
-                        "x-example": ""
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "API Key",
-                        "required": false,
-                        "type": "string",
-                        "x-example": ""
-                    },
-                    {
-                        "name": "Application",
-                        "in": "header",
-                        "description": "APP Key",
-                        "required": false,
-                        "type": "string",
-                        "x-example": ""
-                    }
-                ],
+                    "name": "transactionId",
+                    "in": "path",
+                    "description": "Transaction ID",
+                    "required": true,
+                    "type": "string",
+                    "x-example": ""
+                }],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -213,30 +164,13 @@
                     "application/json"
                 ],
                 "parameters": [{
-                        "name": "transactionId",
-                        "in": "path",
-                        "description": "Transaction ID",
-                        "required": true,
-                        "type": "string",
-                        "x-example": ""
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "API Key",
-                        "required": false,
-                        "type": "string",
-                        "x-example": ""
-                    },
-                    {
-                        "name": "Application",
-                        "in": "header",
-                        "description": "APP Key",
-                        "required": false,
-                        "type": "string",
-                        "x-example": ""
-                    }
-                ],
+                    "name": "transactionId",
+                    "in": "path",
+                    "description": "Transaction ID",
+                    "required": true,
+                    "type": "string",
+                    "x-example": ""
+                }],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -256,30 +190,13 @@
                 "description": "Start transaction",
                 "operationId": "startTransaction",
                 "parameters": [{
-                        "name": "transactionId",
-                        "in": "path",
-                        "description": "Transaction ID",
-                        "required": true,
-                        "type": "string",
-                        "x-example": ""
-                    },
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "API Key",
-                        "required": false,
-                        "type": "string",
-                        "x-example": ""
-                    },
-                    {
-                        "name": "Application",
-                        "in": "header",
-                        "description": "APP Key",
-                        "required": false,
-                        "type": "string",
-                        "x-example": ""
-                    }
-                ],
+                    "name": "transactionId",
+                    "in": "path",
+                    "description": "Transaction ID",
+                    "required": true,
+                    "type": "string",
+                    "x-example": ""
+                }],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -587,20 +504,7 @@
             "properties": {}
         }
     },
-    "securityDefinitions": {
-        "Authorization": {
-            "description": "Authorization",
-            "type": "apiKey",
-            "name": "Authorization",
-            "in": "header"
-        },
-        "Application": {
-            "description": "Application",
-            "type": "apiKey",
-            "name": "Application",
-            "in": "header"
-        }
-    },
+    "securityDefinitions": {},
     "security": [],
     "tags": [{
         "name": "Web",
