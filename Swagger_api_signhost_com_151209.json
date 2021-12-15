@@ -136,7 +136,15 @@
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [],
+                "parameters": [{
+                    "name": "Transaction",
+                    "in": "body",
+                    "description": "Transaction Details",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/TransactionDetails"
+                    }
+                }],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -282,6 +290,63 @@
         }
     },
     "definitions": {
+        "TransactionDetails": {
+            "description": "Model for Transaction Details",
+            "required": [
+                "Id"
+            ],
+            "properties": {
+                "Signers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Signer"
+                    }
+                },
+                "SendEmailNotifications": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "Signer": {
+            "description": "Model for Signer",
+            "required": [
+                "Email"
+            ],
+            "properties": {
+                "Email": {
+                    "type": "string"
+                },
+                "SendSignRequest": {
+                    "type": "boolean"
+                },
+                "Reference": {
+                    "type": "string"
+                },
+                "SignRequestMessage": {
+                    "type": "string"
+                },
+                "DaysToRemind": {
+                    "type": "number"
+                },
+                "Verifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Verification"
+                    }
+                }
+            }
+        },
+        "Verification": {
+            "description": "Model for Verification",
+            "required": [
+                "Type"
+            ],
+            "properties": {
+                "Type": {
+                    "type": "string"
+                }
+            }
+        },
         "Transaction": {
             "description": "Model for Transaction",
             "required": [
