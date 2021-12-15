@@ -39,6 +39,83 @@
                 },
                 "security": []
             }
+        },
+        "/api/transaction/{transactionId}/file/{fileId}": {
+            "put": {
+                "tags": [
+                    "Web"
+                ],
+                "description": "Add file to transaction",
+                "operationId": "addFileToTransaction",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "parameters": [{
+                        "name": "transactionId",
+                        "in": "path",
+                        "description": "Transaction ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "fileId",
+                        "in": "path",
+                        "description": "File ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "File",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": []
+            },
+            "get": {
+                "tags": [
+                    "Web"
+                ],
+                "description": "Get file",
+                "operationId": "getFile",
+                "produces": [
+                    "application/pdf"
+                ],
+                "parameters": [{
+                        "name": "transactionId",
+                        "in": "path",
+                        "description": "Transaction ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "fileId",
+                        "in": "path",
+                        "description": "File ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "file"
+                        }
+                    }
+                },
+                "security": []
+            }
         }
     },
     "definitions": {
