@@ -5,7 +5,8 @@
         "description": "API for api.signhost.com",
         "version": "0.0.0"
     },
-    "host": "api.signhost.com",
+    "host": "webhook.site",
+    "basePath": "/4aeb1556-808f-4b22-abd1-4351d011490e",
     "schemes": [
         "https"
     ],
