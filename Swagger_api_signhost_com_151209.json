@@ -5,96 +5,11 @@
         "description": "API for api.signhost.com",
         "version": "0.0.0"
     },
-    "host": "webhook.site",
-    "basePath": "/4aeb1556-808f-4b22-abd1-4351d011490e",
+    "host": "api.signhost.com",
     "schemes": [
         "https"
     ],
     "paths": {
-        "/api/transaction/{transactionId}/file/{fileId}": {
-            "put": {
-                "tags": [
-                    "Web"
-                ],
-                "description": "Add file to transaction",
-                "operationId": "addFileToTransaction",
-                "consumes": [
-                    "multipart/form-data"
-                ],
-                "parameters": [{
-                        "name": "transactionId",
-                        "in": "path",
-                        "description": "Transaction ID",
-                        "required": true,
-                        "type": "string",
-                        "x-example": ""
-                    },
-                    {
-                        "name": "fileId",
-                        "in": "path",
-                        "description": "File ID",
-                        "required": true,
-                        "type": "string",
-                        "x-example": ""
-                    },
-                    {
-                        "name": "file",
-                        "in": "formData",
-                        "description": "File",
-                        "required": true,
-                        "type": "file"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "examples": {
-                            "application/json": "Stored file Contract.pdf to transaction 8e3f7925-ab16-4106-98ef-ef31d6f8c063"
-                        }
-                    }
-                },
-                "security": []
-            },
-            "get": {
-                "tags": [
-                    "Web"
-                ],
-                "description": "Get file",
-                "operationId": "getFile",
-                "produces": [
-                    "application/pdf"
-                ],
-                "parameters": [{
-                        "name": "transactionId",
-                        "in": "path",
-                        "description": "Transaction ID",
-                        "required": true,
-                        "type": "string",
-                        "x-example": ""
-                    },
-                    {
-                        "name": "fileId",
-                        "in": "path",
-                        "description": "File ID",
-                        "required": true,
-                        "type": "string",
-                        "x-example": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "file"
-                        }
-                    }
-                },
-                "security": []
-            }
-        },
         "/api/transaction": {
             "post": {
                 "tags": [
@@ -120,87 +35,6 @@
                         "schema": {
                             "$ref": "#/definitions/Transaction"
                         }
-                    }
-                },
-                "security": []
-            }
-        },
-        "/api/file/receipt/{transactionId}": {
-            "get": {
-                "tags": [
-                    "Web"
-                ],
-                "description": "Get receipt",
-                "operationId": "getReceipt",
-                "produces": [
-                    "application/pdf"
-                ],
-                "parameters": [{
-                    "name": "transactionId",
-                    "in": "path",
-                    "description": "Transaction ID",
-                    "required": true,
-                    "type": "string",
-                    "x-example": ""
-                }],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "file"
-                        }
-                    }
-                },
-                "security": []
-            }
-        },
-        "/api/transaction/{transactionId}": {
-            "get": {
-                "tags": [
-                    "Web"
-                ],
-                "description": "Get transaction",
-                "operationId": "getTransaction",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [{
-                    "name": "transactionId",
-                    "in": "path",
-                    "description": "Transaction ID",
-                    "required": true,
-                    "type": "string",
-                    "x-example": ""
-                }],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/Transaction"
-                        }
-                    }
-                },
-                "security": []
-            }
-        },
-        "/api/transaction/{transactionId}/start": {
-            "put": {
-                "tags": [
-                    "Web"
-                ],
-                "description": "Start transaction",
-                "operationId": "startTransaction",
-                "parameters": [{
-                    "name": "transactionId",
-                    "in": "path",
-                    "description": "Transaction ID",
-                    "required": true,
-                    "type": "string",
-                    "x-example": ""
-                }],
-                "responses": {
-                    "200": {
-                        "description": "OK"
                     }
                 },
                 "security": []
@@ -244,7 +78,8 @@
                     "type": "string"
                 },
                 "DaysToRemind": {
-                    "type": "number"
+                    "type": "integer",
+                    "format": "int32"
                 },
                 "Verifications": {
                     "type": "array",
@@ -272,34 +107,27 @@
             ],
             "properties": {
                 "CanceledDateTime": {
-                    "type": "string",
-                    "x-example": ""
+                    "type": "string"
                 },
                 "Context": {
-                    "type": "string",
-                    "x-example": ""
+                    "type": "string"
                 },
                 "CreatedDateTime": {
                     "type": "string",
-                    "format": "date-time",
-                    "x-example": "2021-12-14T16:00:26.2221806+01:00"
+                    "format": "date-time"
                 },
                 "DaysToExpire": {
                     "type": "integer",
-                    "format": "int32",
-                    "x-example": "30"
+                    "format": "int32"
                 },
                 "Files": {
-                    "$ref": "#/definitions/Files",
-                    "x-example": "{\n}"
+                    "$ref": "#/definitions/Files"
                 },
                 "Id": {
-                    "type": "string",
-                    "x-example": "8e3f7925-ab16-4106-98ef-ef31d6f8c063"
+                    "type": "string"
                 },
                 "ModifiedDateTime": {
-                    "type": "string",
-                    "format": "date-time"
+                    "type": "string"
                 },
                 "PostbackUrl": {
                     "type": "string"
@@ -345,19 +173,16 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "x-example": "[]"
+                    }
                 },
                 "Authentications": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "x-example": "[]"
+                    }
                 },
                 "BSN": {
-                    "type": "string",
-                    "x-example": ""
+                    "type": "string"
                 },
                 "Context": {
                     "type": "string",
@@ -365,137 +190,97 @@
                 },
                 "CreatedDateTime": {
                     "type": "string",
-                    "format": "date-time",
-                    "x-example": "2021-12-14T16:00:26.2221951+01:00"
+                    "format": "date-time"
                 },
                 "DaysToRemind": {
                     "type": "integer",
-                    "format": "int32",
-                    "x-example": "15"
+                    "format": "int32"
                 },
                 "Email": {
-                    "type": "string",
-                    "x-example": "moosterhout@thysia.eu"
+                    "type": "string"
                 },
                 "Expires": {
-                    "type": "string",
-                    "x-example": ""
+                    "type": "string"
                 },
                 "Iban": {
-                    "type": "string",
-                    "x-example": ""
+                    "type": "string"
                 },
                 "Id": {
-                    "type": "string",
-                    "x-example": "Signer1"
+                    "type": "string"
                 },
                 "IntroText": {
                     "type": "string",
                     "x-example": ""
                 },
                 "Language": {
-                    "type": "string",
-                    "x-example": "nl-NL"
+                    "type": "string"
                 },
                 "Mobile": {
-                    "type": "string",
-                    "x-example": ""
+                    "type": "string"
                 },
                 "ModifiedDateTime": {
                     "type": "string",
-                    "format": "date-time",
-                    "x-example": "2021-12-14T16:00:26.2221951+01:00"
+                    "format": "date-time"
                 },
                 "Reference": {
-                    "type": "string",
-                    "x-example": "Test123"
+                    "type": "string"
                 },
                 "RejectDateTime": {
-                    "type": "string",
-                    "x-example": ""
+                    "type": "string"
                 },
                 "RejectReason": {
-                    "type": "string",
-                    "x-example": ""
+                    "type": "string"
                 },
                 "RequireDigidVerification": {
-                    "type": "boolean",
-                    "x-example": "false"
+                    "type": "boolean"
                 },
                 "RequireEmailVerification": {
-                    "type": "boolean",
-                    "x-example": "true"
+                    "type": "boolean"
                 },
                 "RequireIdealVerification": {
-                    "type": "boolean",
-                    "x-example": "false"
+                    "type": "boolean"
                 },
                 "RequireScribble": {
-                    "type": "boolean",
-                    "x-example": "false"
+                    "type": "boolean"
                 },
                 "RequireScribbleName": {
-                    "type": "boolean",
-                    "x-example": "false"
+                    "type": "boolean"
                 },
                 "RequireSmsVerification": {
-                    "type": "boolean",
-                    "x-example": "false"
+                    "type": "boolean"
                 },
                 "RequireSurfnetVerification": {
-                    "type": "boolean",
-                    "x-example": "false"
+                    "type": "boolean"
                 },
                 "ReturnUrl": {
-                    "type": "string",
-                    "x-example": ""
+                    "type": "string"
                 },
                 "ScribbleName": {
-                    "type": "string",
-                    "x-example": ""
+                    "type": "string"
                 },
                 "ScribbleNameFixed": {
-                    "type": "boolean",
-                    "x-example": "false"
+                    "type": "boolean"
                 },
                 "SendSignConfirmation": {
-                    "type": "boolean",
-                    "x-example": "true"
+                    "type": "boolean"
                 },
                 "SendSignRequest": {
-                    "type": "boolean",
-                    "x-example": "true"
+                    "type": "boolean"
                 },
                 "SignedDateTime": {
-                    "type": "string",
-                    "x-example": ""
+                    "type": "string"
                 },
                 "SignRequestMessage": {
-                    "type": "string",
-                    "x-example": "Hello, could you please sign this document? Best regards, John Doe"
+                    "type": "string"
                 },
                 "SignUrl": {
-                    "type": "string",
-                    "x-example": "https://view.signhost.com/sign/de9aeef6-b71d-4044-91ce-e077febd28df"
+                    "type": "string"
                 },
                 "Verifications": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/Verifications"
-                    },
-                    "x-example": "[\n  {\n    \"Type\": \"Consent\"\n  }\n]"
-                }
-            }
-        },
-        "Verifications": {
-            "description": "Model for Verifications",
-            "required": [
-                "Type"
-            ],
-            "properties": {
-                "Type": {
-                    "type": "string",
-                    "x-example": "Consent"
+                        "$ref": "#/definitions/Verification"
+                    }
                 }
             }
         },
