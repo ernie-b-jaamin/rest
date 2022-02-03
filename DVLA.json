@@ -17,6 +17,15 @@
                 ],
                 "description": "Vehicle Enquiry",
                 "operationId": "vehicleEnquiry",
+                "parameters": [{
+                    "name": "Vehicle",
+                    "in": "body",
+                    "description": "Registration Number",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/VehicleDetails"
+                    }
+                }],
                 "produces": [
                     "application/json"
                 ],
@@ -35,6 +44,14 @@
         }
     },
     "definitions": {
+        "VehicleDetails": {
+            "description": "Model for Vehicle Details",
+            "properties": {
+                "registrationNumber": {
+                    "type": "string"
+                }
+            }
+        },
         "Vehicle": {
             "description": "Model for Vehicle",
             "required": [
