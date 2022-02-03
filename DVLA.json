@@ -1,0 +1,130 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "DVLA",
+        "description": "API for driver-vehicle-licensing.api.gov.uk",
+        "version": "0.0.0"
+    },
+    "host": "driver-vehicle-licensing.api.gov.uk",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/vehicle-enquiry/v1/vehicles": {
+            "post": {
+                "tags": [
+                    "Vehicle_enquiry"
+                ],
+                "description": "Vehicle Enquiry",
+                "operationId": "vehicleEnquiry",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Vehicle"
+                        }
+                    }
+                },
+                "security": [{
+                    "Default": []
+                }]
+            }
+        }
+    },
+    "definitions": {
+        "Vehicle": {
+            "description": "Model for Vehicle",
+            "required": [
+                "co2Emissions"
+            ],
+            "properties": {
+                "co2Emissions": {
+                    "type": "integer",
+                    "format": "int32",
+                    "x-example": "149"
+                },
+                "colour": {
+                    "type": "string",
+                    "x-example": "SILVER"
+                },
+                "dateOfLastV5CIssued": {
+                    "type": "string",
+                    "format": "date",
+                    "x-example": "2018-02-14"
+                },
+                "engineCapacity": {
+                    "type": "integer",
+                    "format": "int32",
+                    "x-example": "1390"
+                },
+                "fuelType": {
+                    "type": "string",
+                    "x-example": "PETROL"
+                },
+                "make": {
+                    "type": "string",
+                    "x-example": "VOLKSWAGEN"
+                },
+                "markedForExport": {
+                    "type": "boolean",
+                    "x-example": "false"
+                },
+                "monthOfFirstRegistration": {
+                    "type": "string",
+                    "x-example": "2008-03"
+                },
+                "motExpiryDate": {
+                    "type": "string",
+                    "format": "date",
+                    "x-example": "2023-01-15"
+                },
+                "motStatus": {
+                    "type": "string",
+                    "x-example": "Valid"
+                },
+                "registrationNumber": {
+                    "type": "string",
+                    "x-example": "NU08RZA"
+                },
+                "taxDueDate": {
+                    "type": "string",
+                    "format": "date",
+                    "x-example": "2023-02-01"
+                },
+                "taxStatus": {
+                    "type": "string",
+                    "x-example": "Taxed"
+                },
+                "typeApproval": {
+                    "type": "string",
+                    "x-example": "M1"
+                },
+                "wheelplan": {
+                    "type": "string",
+                    "x-example": "2 AXLE RIGID BODY"
+                },
+                "yearOfManufacture": {
+                    "type": "integer",
+                    "format": "int32",
+                    "x-example": "2008"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Default": {
+            "description": "Default Authentication",
+            "type": "apiKey",
+            "name": "x-api-key",
+            "in": "header"
+        }
+    },
+    "security": [],
+    "tags": [{
+        "name": "Vehicle_enquiry",
+        "description": "Operations about Vehicle_enquiry"
+    }]
+}
