@@ -70,7 +70,8 @@
                         "in": "formData",
                         "description": "File",
                         "required": true,
-                        "type": "file"
+                        "type": "string",
+                        "format": "binary"
                     }
                 ],
                 "responses": {
