@@ -1,0 +1,343 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Sign Host",
+        "description": "API for api.signhost.com",
+        "version": "0.0.0"
+    },
+    "host": "webhook.site",
+    "basePath": "/8c0deb12-dcef-40d6-966d-a76f1a7924c6",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/api/transaction": {
+            "post": {
+                "tags": [
+                    "Web"
+                ],
+                "description": "Create transaction",
+                "operationId": "createTransaction",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "name": "Transaction",
+                    "in": "body",
+                    "description": "Transaction Details",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/TransactionDetails"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Transaction"
+                        }
+                    }
+                },
+                "security": []
+            }
+        },
+        "/api/transaction/{transactionId}/file/{fileId}": {
+            "put": {
+                "tags": [
+                    "Web"
+                ],
+                "description": "Add file to transaction",
+                "operationId": "addFileToTransaction",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "parameters": [{
+                        "name": "transactionId",
+                        "in": "path",
+                        "description": "Transaction ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "fileId",
+                        "in": "path",
+                        "description": "File ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "File",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "security": []
+            }
+        }
+    },
+    "definitions": {
+        "TransactionDetails": {
+            "description": "Model for Transaction Details",
+            "required": [
+                "Id"
+            ],
+            "properties": {
+                "Signers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Signer"
+                    }
+                },
+                "SendEmailNotifications": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "Signer": {
+            "description": "Model for Signer",
+            "required": [
+                "Email"
+            ],
+            "properties": {
+                "Email": {
+                    "type": "string"
+                },
+                "SendSignRequest": {
+                    "type": "boolean"
+                },
+                "Reference": {
+                    "type": "string"
+                },
+                "SignRequestMessage": {
+                    "type": "string"
+                },
+                "DaysToRemind": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "Verifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Verification"
+                    }
+                }
+            }
+        },
+        "Verification": {
+            "description": "Model for Verification",
+            "required": [
+                "Type"
+            ],
+            "properties": {
+                "Type": {
+                    "type": "string"
+                }
+            }
+        },
+        "Transaction": {
+            "description": "Model for Transaction",
+            "required": [
+                "Id"
+            ],
+            "properties": {
+                "CanceledDateTime": {
+                    "type": "string"
+                },
+                "Context": {
+                    "type": "string"
+                },
+                "CreatedDateTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "DaysToExpire": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "Files": {
+                    "$ref": "#/definitions/Files"
+                },
+                "Id": {
+                    "type": "string"
+                },
+                "ModifiedDateTime": {
+                    "type": "string"
+                },
+                "PostbackUrl": {
+                    "type": "string"
+                },
+                "Receivers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "Reference": {
+                    "type": "string"
+                },
+                "Seal": {
+                    "type": "boolean"
+                },
+                "SendEmailNotifications": {
+                    "type": "boolean"
+                },
+                "Signers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Signers"
+                    }
+                },
+                "SignRequestMode": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "Status": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "Signers": {
+            "description": "Model for Signers",
+            "required": [
+                "Activities"
+            ],
+            "properties": {
+                "Activities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "Authentications": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "BSN": {
+                    "type": "string"
+                },
+                "Context": {
+                    "type": "string",
+                    "x-example": ""
+                },
+                "CreatedDateTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "DaysToRemind": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "Expires": {
+                    "type": "string"
+                },
+                "Iban": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "string"
+                },
+                "IntroText": {
+                    "type": "string",
+                    "x-example": ""
+                },
+                "Language": {
+                    "type": "string"
+                },
+                "Mobile": {
+                    "type": "string"
+                },
+                "ModifiedDateTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "Reference": {
+                    "type": "string"
+                },
+                "RejectDateTime": {
+                    "type": "string"
+                },
+                "RejectReason": {
+                    "type": "string"
+                },
+                "RequireDigidVerification": {
+                    "type": "boolean"
+                },
+                "RequireEmailVerification": {
+                    "type": "boolean"
+                },
+                "RequireIdealVerification": {
+                    "type": "boolean"
+                },
+                "RequireScribble": {
+                    "type": "boolean"
+                },
+                "RequireScribbleName": {
+                    "type": "boolean"
+                },
+                "RequireSmsVerification": {
+                    "type": "boolean"
+                },
+                "RequireSurfnetVerification": {
+                    "type": "boolean"
+                },
+                "ReturnUrl": {
+                    "type": "string"
+                },
+                "ScribbleName": {
+                    "type": "string"
+                },
+                "ScribbleNameFixed": {
+                    "type": "boolean"
+                },
+                "SendSignConfirmation": {
+                    "type": "boolean"
+                },
+                "SendSignRequest": {
+                    "type": "boolean"
+                },
+                "SignedDateTime": {
+                    "type": "string"
+                },
+                "SignRequestMessage": {
+                    "type": "string"
+                },
+                "SignUrl": {
+                    "type": "string"
+                },
+                "Verifications": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Verification"
+                    }
+                }
+            }
+        },
+        "Files": {
+            "description": "Model for Files",
+            "required": [],
+            "properties": {}
+        }
+    },
+    "securityDefinitions": {},
+    "security": [],
+    "tags": [{
+        "name": "Web",
+        "description": "Operations about Web"
+    }]
+}
