@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "API's for TurnQuest Application",
-    "version": "N/A",
+    "version": "1.0",
     "title": "TurnQuest API's",
     "termsOfService": "1.0",
     "contact": {
