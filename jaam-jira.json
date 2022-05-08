@@ -1,0 +1,401 @@
+{
+  "info": {
+    "title": "jaam jira",
+    "description": "",
+    "version": "Unknown"
+  },
+  "tags": [
+    {
+      "name": "Service Info",
+      "description": "Base service info"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Service Info"
+        ],
+        "summary": "Get info about the service",
+        "description": "Returns the service info",
+        "operationId": "getServiceInfo",
+        "responses": {
+          "200": {
+            "description": "The REST service Information",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "title": "Name",
+                  "description": "The name of the service"
+                },
+                "description": {
+                  "type": "string",
+                  "title": "Description",
+                  "description": "The description of the service"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/getprojecttasks": {
+      "post": {
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "The result of the flow",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Task"
+              }
+            }
+          },
+          "400": {
+            "description": "Request error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "statusCode": {
+                  "type": "integer"
+                },
+                "errorMessage": {
+                  "type": "string"
+                },
+                "invalid": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not Authorized",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "statusCode": {
+                  "type": "integer"
+                },
+                "errorMessage": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Request error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "statusCode": {
+                  "type": "integer"
+                },
+                "errorMessage": {
+                  "type": "string"
+                },
+                "invalid": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "statusCode": {
+                  "type": "integer"
+                },
+                "errorMessage": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "description": "The input",
+            "required": true,
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/TaskRequest"
+            }
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "swagger": "2.0",
+  "host": "rest.synatic.com",
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/jaamautomationdev/jaam-jira",
+  "definitions": {
+    "Task": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "rate": {
+          "type": "string"
+        },
+        "dueDate": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer"
+        },
+        "progress": {
+          "type": "integer"
+        },
+        "percent": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parent": {
+          "type": "string"
+        },
+        "isParent": {
+          "type": "boolean"
+        }
+      }
+    },
+    "TaskRequest": {
+      "type": "object",
+      "properties": {
+        "Project": {
+          "type": "string"
+        },
+        "CustomerProject": {
+          "type": "string"
+        },
+        "AdditionalJQL": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "x-api-key": {
+      "type": "apiKey",
+      "name": "x-api-key",
+      "in": "header"
+    }
+  },
+  "x-components": {
+    "parameters": {
+      "filterParam": {
+        "name": "$filter",
+        "in": "query",
+        "description": "The oData formatted filter e.g. $filter=field eq value",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "selectParam": {
+        "name": "$select",
+        "in": "query",
+        "description": "The fields to select e.g. $select=field1,field2",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "skipParam": {
+        "name": "$skip",
+        "in": "query",
+        "description": "The records to skip",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 0
+        }
+      },
+      "limitParam": {
+        "name": "$limit",
+        "in": "query",
+        "description": "The number of records to return",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 50
+        }
+      },
+      "sortParam": {
+        "name": "$sort",
+        "in": "query",
+        "description": "The sort order of records e.g. $sort=field1,-field2",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "rawQueryParam": {
+        "name": "$rawQuery",
+        "in": "query",
+        "description": "A mongodb json find statement as a string. e.g. {\"field1\":1}",
+        "required": false,
+        "schema": {
+          "type": "object"
+        }
+      }
+    },
+    "responses": {
+      "flowAcceptedResponse": {
+        "description": "The Flow has been accepted for processing",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "runId": {
+                  "type": "string",
+                  "title": "Run ID",
+                  "description": "The Run ID of the Flow processed"
+                }
+              }
+            }
+          }
+        }
+      },
+      "serviceInfo": {
+        "description": "The REST service Information",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Name",
+              "description": "The name of the service"
+            },
+            "description": {
+              "type": "string",
+              "title": "Description",
+              "description": "The description of the service"
+            }
+          }
+        }
+      },
+      "notFoundError": {
+        "description": "Not Found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "statusCode": {
+                  "type": "integer"
+                },
+                "errorMessage": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "serverError": {
+        "description": "Internal Server Error",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "string"
+            },
+            "statusCode": {
+              "type": "integer"
+            },
+            "errorMessage": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "formatError": {
+        "description": "Request error",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "string"
+            },
+            "statusCode": {
+              "type": "integer"
+            },
+            "errorMessage": {
+              "type": "string"
+            },
+            "invalid": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      "unauthorizedError": {
+        "description": "Not Authorized",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "string"
+            },
+            "statusCode": {
+              "type": "integer"
+            },
+            "errorMessage": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
