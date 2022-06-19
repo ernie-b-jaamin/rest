@@ -35,18 +35,24 @@
     "basePath": "/jaamautomationdev/jaam-talent",
     "definitions": {
         "Currency": {
-            "type": "object",
-            "properties": {
-                "cc": {
-                    "type": "string"
-                },
-                "symbol": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                }
-            }
+      "type": "object",
+      "properties": {
+        "cc": {
+          "type": "string"
+        },
+        "info": {}
+      }
+    },
+    "CurrencyInfo": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
         }
+      }
+    }
     }
 }
