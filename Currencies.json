@@ -1,0 +1,52 @@
+{
+    "info": {
+        "title": "Currencies",
+        "description": "",
+        "version": "Unknown"
+    },
+    "paths": {
+        "/currencies": {
+            "get": {
+                "summary": "Get currencies",
+                "operationId": "getCurrencies",
+                "responses": {
+                    "200": {
+                        "description": "The result of the flow",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Currency"
+                            }
+                        }
+                    }
+                },
+                "parameters": [],
+                "produces": [
+                    "application/json"
+                ]
+            }
+        }
+    },
+    "swagger": "2.0",
+    "host": "rest.synatic.com",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/jaamautomationdev/jaam-talent",
+    "definitions": {
+        "Currency": {
+            "type": "object",
+            "properties": {
+                "cc": {
+                    "type": "string"
+                },
+                "symbol": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
